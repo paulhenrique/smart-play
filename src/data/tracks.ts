@@ -32,4 +32,12 @@ export const tracks: Track[] = [
         bpm: 120,
         isPremium: true
     },
+    {
+        id: '4',
+        name: 'Jazz Four',
+        originalKey: 'C',
+        url: '/audio/Jazz-four-90.mp3', // Updated filename
+        bpm: 90,
+        isPremium: false
+    },
 ];

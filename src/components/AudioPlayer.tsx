@@ -16,7 +16,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
     const [pitch, setPitch] = useState(0); // Semitones
     const [speed, setSpeed] = useState(1); // Playback Rate
     const [isLoading, setIsLoading] = useState(false);
-    const [duration, setDuration] = useState(0);
+    const [, setDuration] = useState(0);
 
     const playerRef = useRef<Tone.GrainPlayer | null>(null);
     const requestRef = useRef<number | null>(null);

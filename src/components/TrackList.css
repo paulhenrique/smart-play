@@ -64,6 +64,16 @@
     touch-action: manipulation;
 }
 
+.track-item.locked {
+    opacity: 0.6;
+    cursor: default;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.track-item.locked:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
 /* Active state for mobile feedback */
 .track-item:active {
     background: rgba(255, 255, 255, 0.08);

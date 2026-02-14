@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PlayCircle } from 'lucide-react';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import AudioPlayer from './components/AudioPlayer';
 import TrackList from './components/TrackList';
 import { tracks } from './data/tracks';
@@ -14,15 +15,36 @@ const App: React.FC = () => {
       <div className="main-wrapper">
 
         <header className="app-header">
-          <div className="logo-container">
-            <PlayCircle size={48} className="text-white" color="white" />
+          <div className="header-left">
+            <div className="logo-container">
+              <PlayCircle size={48} className="text-white" color="white" />
+            </div>
+            <div>
+              <h1 className="app-title">
+                Smart Play
+              </h1>
+              <p className="app-subtitle">
+                Backing Tracks & Real-time Transposition
+              </p>
+            </div>
           </div>
-          <h1 className="app-title">
-            Smart Play
-          </h1>
-          <p className="app-subtitle">
-            Backing Tracks & Real-time Transposition
-          </p>
+
+          <div className="auth-container">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="btn-login">Entrar</button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "w-10 h-10 border-2 border-white/20"
+                  }
+                }}
+              />
+            </SignedIn>
+          </div>
         </header>
 
         <div className="content-grid">

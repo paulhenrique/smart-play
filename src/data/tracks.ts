@@ -5,6 +5,7 @@ export interface Track {
     originalKey: string;
     url: string;
     bpm?: number;
+    isPremium?: boolean;
 }
 
 export const tracks: Track[] = [
@@ -20,13 +21,15 @@ export const tracks: Track[] = [
         name: 'Bossa Nova - Piano Baixo',
         originalKey: 'C',
         url: '/audio/bossa-nova-piano-baixo.mp3', // Updated filename
-        bpm: 120
+        bpm: 120,
+        isPremium: true
     },
     {
         id: '3',
         name: 'Bossa Nova - Bateria',
         originalKey: 'C',
         url: '/audio/bossa-nova-drum-loop.mp3', // Updated filename
-        bpm: 120
+        bpm: 120,
+        isPremium: true
     },
 ];

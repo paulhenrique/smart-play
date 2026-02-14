@@ -17,16 +17,16 @@ export const tracks: Track[] = [
     },
     {
         id: '2',
-        name: 'Samba - Demo',
-        originalKey: 'D',
-        url: '/audio/bossa-nova.mp3',
-        bpm: 100
+        name: 'Bossa Nova - Piano Baixo',
+        originalKey: 'C',
+        url: '/audio/bossa-nova-piano-baixo.mp3', // Updated filename
+        bpm: 120
     },
     {
         id: '3',
-        name: 'Jazz - Demo',
-        originalKey: 'G',
-        url: '/audio/bossa-nova.mp3',
-        bpm: 140
-    }
+        name: 'Bossa Nova - Bateria',
+        originalKey: 'C',
+        url: '/audio/bossa-nova-drum-loop.mp3', // Updated filename
+        bpm: 120
+    },
 ];

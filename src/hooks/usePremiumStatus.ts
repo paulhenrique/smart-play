@@ -1,11 +1,11 @@
-import { useUser } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/clerk-react";
 
 export const usePremiumStatus = () => {
-    const { user, isLoaded, isSignedIn } = useUser();
+    const { isLoaded, isSignedIn, has } = useAuth();
 
-    // In strict mode, we might want to check for a specific value
-    // For now, checks if isPremium is explicitly true
-    const isPremium = user?.publicMetadata?.isPremium === true;
+    // Check if user has the 'pro_access' permission from Clerk Billing
+    // We also keep the metadata check as a fallback if you manually assigned it
+    const isPremium = has?.({ permission: 'pro_access' }) || false;
 
     return { isPremium, isLoaded, isSignedIn };
 };

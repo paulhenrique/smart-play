@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Check, Star } from 'lucide-react';
-import { useUser } from '@clerk/clerk-react';
+import { useClerk } from '@clerk/clerk-react';
 
 interface PremiumModalProps {
     isOpen: boolean;
@@ -8,38 +8,20 @@ interface PremiumModalProps {
 }
 
 const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose }) => {
-    const { user } = useUser();
+    const { openUserProfile } = useClerk();
     const [isLoading, setIsLoading] = useState(false);
 
     if (!isOpen) return null;
 
     const handleSubscribe = async () => {
-        if (!user) return;
         setIsLoading(true);
-
+        // Opens the Clerk User Profile directly to the "Manage account" or Billing section
+        // Clerk handles the UI for subscribing to the configured plan
         try {
-            const response = await fetch('/api/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    userId: user.id,
-                    email: user.primaryEmailAddress?.emailAddress,
-                }),
-            });
-
-            const data = await response.json();
-
-            if (data.url) {
-                window.location.href = data.url;
-            } else {
-                console.error('No checkout URL returned');
-                alert('Erro ao iniciar checkout. Tente novamente.');
-            }
-        } catch (error) {
-            console.error('Error creating checkout session:', error);
-            alert('Erro de conexão. Verifique sua internet.');
+            await openUserProfile();
+            onClose();
+        } catch (err) {
+            console.error("Failed to open user profile", err);
         } finally {
             setIsLoading(false);
         }
@@ -97,12 +79,12 @@ const PremiumModal: React.FC<PremiumModalProps> = ({ isOpen, onClose }) => {
                     {isLoading ? (
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
-                        'Seja Pro por R$ 29,90/mês'
+                        'Gerenciar Assinatura'
                     )}
                 </button>
 
                 <p className="text-center text-xs text-slate-500 mt-4">
-                    Cancele a qualquer momento. Pagamento seguro via Stripe.
+                    Gerenciado com segurança via Clerk & Stripe.
                 </p>
             </div>
         </div>

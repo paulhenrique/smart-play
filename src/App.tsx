@@ -3,12 +3,21 @@ import { PlayCircle } from 'lucide-react';
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import AudioPlayer from './components/AudioPlayer';
 import TrackList from './components/TrackList';
+import PricingPage from './components/PricingPage'; // New Component
 import { tracks } from './data/tracks';
 import type { Track } from './data/tracks';
 import './App.css';
 
+type ViewState = 'player' | 'pricing';
+
 const App: React.FC = () => {
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
+  const [view, setView] = useState<ViewState>('player');
+
+  // If view is 'pricing', render the full page component
+  if (view === 'pricing') {
+    return <PricingPage onBack={() => setView('player')} />;
+  }
 
   return (
     <div className="app-container">
@@ -54,6 +63,7 @@ const App: React.FC = () => {
               tracks={tracks}
               onSelect={setSelectedTrack}
               selectedTrackId={selectedTrack?.id}
+              onShowPremium={() => setView('pricing')}
             />
           </div>
 

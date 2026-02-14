@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as Tone from 'tone';
-import { Play, Pause, Square, Music, Volume2, Plus, Minus } from 'lucide-react';
+import { Play, Pause, Square, Music, Volume2, Plus, Minus, Loader2 } from 'lucide-react';
 import type { Track } from '../data/tracks';
 import './AudioPlayer.css';
 
@@ -161,7 +161,18 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
     }
 
     return (
-        <div className="audio-player-container">
+        <div className="audio-player-container relative">
+
+            {/* Loading Overlay */}
+            {isLoading && !isReady && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-[20px]">
+                    <div className="flex flex-col items-center gap-3 animate-in fade-in duration-300">
+                        <Loader2 size={48} className="animate-spin text-purple-500" />
+                        <span className="text-sm font-medium text-white/90">Carregando áudio...</span>
+                    </div>
+                </div>
+            )}
+
             {/* Header */}
             <div className="player-header">
                 <div className="track-display">
@@ -187,7 +198,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                         )}
                     </div>
                 </div>
-                {!isReady && isLoading && <div className="loading-text">Carregando...</div>}
             </div>
 
             {/* Controls */}

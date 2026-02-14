@@ -1,0 +1,139 @@
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.main-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* Removed fixed margins/paddings that might cause overflow */
+}
+
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.logo-container {
+  padding: 1rem;
+  border-radius: 50%;
+  background: linear-gradient(to top right, #7c3aed, #2563eb);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.5rem;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(to right, #c084fc, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 0;
+  letter-spacing: -0.05em;
+  line-height: 1.2;
+}
+
+.app-subtitle {
+  color: #9ca3af;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.sidebar,
+.player-area {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    padding: 2rem;
+  }
+
+  .content-grid {
+    grid-template-columns: 350px 1fr;
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+/* Mobile Visibility Logic */
+@media (max-width: 1023px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+
+  .content-grid {
+    display: block;
+    /* Remove grid on mobile entirely to avoid unexpected behaviors */
+  }
+
+  .sidebar,
+  .player-area {
+    width: 100%;
+  }
+}
+
+/* Reset Sidebar Heights */
+.sidebar {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+    height: calc(100vh - 4rem);
+    /* Stick to viewport height minus padding */
+    max-height: 800px;
+  }
+}
+
+.player-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.footer-info {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #6b7280;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.footer-main {
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.7;
+}
+
+.footer-note {
+  margin-top: 0.5rem;
+  opacity: 0.4;
+}

@@ -1,0 +1,104 @@
+.track-list-container {
+    width: 100%;
+    max-width: 100%;
+    /* Ensure no overflow */
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; Removed fixed height for flexibility */
+    min-height: 50vh;
+    /* Minimum height */
+    flex: 1;
+    /* Grow to fill parent */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    /* Redundant but safe */
+}
+
+.track-list-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-list-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+}
+
+.track-list-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    /* More space between items for touch */
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 0.5rem;
+}
+
+.track-item {
+    width: 100%;
+    text-align: left;
+    padding: 1.25rem;
+    /* Larger touch target */
+    border-radius: 16px;
+    /* Modern rounded corners */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    position: relative;
+    touch-action: manipulation;
+}
+
+/* Active state for mobile feedback */
+.track-item:active {
+    background: rgba(255, 255, 255, 0.08);
+    transform: scale(0.98);
+}
+
+.track-item.selected {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.15);
+    color: var(--text-primary);
+}
+
+.track-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    /* More readable on mobile */
+    line-height: 1.3;
+}
+
+.track-meta {
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0.7;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.playing-icon {
+    color: var(--accent-color);
+    animation: pulse 2s infinite;
+}

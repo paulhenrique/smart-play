@@ -34,14 +34,20 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
     }, []);
 
     useEffect(() => {
+        // Stop and clean up previous player instance whenever track changes
+        if (playerRef.current) {
+            playerRef.current.stop();
+            playerRef.current.dispose();
+            playerRef.current = null;
+        }
+        setIsPlaying(false);
+        setIsReady(false);
+
         if (!track) return;
 
         const loadAudio = async () => {
             setIsLoading(true);
-            setIsReady(false);
-            setIsPlaying(false);
 
-            // Stop previous if playing
             try {
                 await Tone.loaded();
 
@@ -59,7 +65,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                         // Tone.GrainPlayer buffer duration
                         setDuration(grainPlayer.buffer.duration);
                     },
-                    onerror: (err: Error) => { // Type annotation fixed
+                    onerror: (err: Error) => {
                         console.error("Error loading track", err);
                         setIsLoading(false);
                     }
@@ -75,6 +81,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
         };
 
         loadAudio();
+
+        // Cleanup function for when component unmounts or track changes again
+        return () => {
+            if (playerRef.current) {
+                playerRef.current.stop();
+                playerRef.current.dispose();
+                playerRef.current = null;
+            }
+        };
     }, [track]);
 
     // Speed and Pitch Effect Logic

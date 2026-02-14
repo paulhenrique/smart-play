@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { PlayCircle } from 'lucide-react';
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { SignedIn, UserButton, useUser } from "@clerk/clerk-react";
 import { useTranslation } from 'react-i18next';
 import AudioPlayer from './components/AudioPlayer';
 import TrackList from './components/TrackList';
 import PricingPage from './components/PricingPage';
+import LandingPage from './components/LandingPage';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import { tracks } from './data/tracks';
 import type { Track } from './data/tracks';
@@ -14,7 +15,7 @@ type ViewState = 'player' | 'pricing';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
-  const { user } = useUser();
+  const { user, isLoaded, isSignedIn } = useUser();
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
   const [view, setView] = useState<ViewState>('player');
 
@@ -26,6 +27,18 @@ const App: React.FC = () => {
       }
     }
   }, [user, i18n]);
+
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#0f172a] text-white">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500"></div>
+      </div>
+    );
+  }
+
+  if (!isSignedIn) {
+    return <LandingPage />;
+  }
 
   // If view is 'pricing', render the full page component
   if (view === 'pricing') {
@@ -53,11 +66,6 @@ const App: React.FC = () => {
 
           <div className="auth-container flex items-center gap-4">
             <LanguageSwitcher />
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="btn-login">{t('app.login')}</button>
-              </SignInButton>
-            </SignedOut>
             <SignedIn>
               <UserButton
                 appearance={{

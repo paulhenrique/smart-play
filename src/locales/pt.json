@@ -33,5 +33,18 @@
         "title": "Desbloqueie o Smart Play Pro",
         "description": "Tenha acesso ilimitado a todas as ferramentas profissionais. Eleve sua performance musical com recursos exclusivos e suporte prioritário.",
         "securePayment": "Pagamento processado de forma segura. Cancele a qualquer momento."
+    },
+    "landing": {
+        "heroTitle": "Sua Música, Reinventada.",
+        "heroSubtitle": "Playbacks profissionais com controle de tom e velocidade em tempo real.",
+        "ctaStart": "Começar Agora",
+        "ctaLogin": "Entrar",
+        "featuresTitle": "Por que Smart Play?",
+        "feature1Title": "Áudio de Alta Qualidade",
+        "feature1Desc": "Playbacks cristalinos para apresentações ao vivo.",
+        "feature2Title": "Transposição em Tempo Real",
+        "feature2Desc": "Mude o tom instantaneamente sem perda de qualidade.",
+        "feature3Title": "Sincronização na Nuvem",
+        "feature3Desc": "Acesse seu repertório de qualquer dispositivo."
     }
 }

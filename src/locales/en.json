@@ -33,5 +33,18 @@
         "title": "Unlock Smart Play Pro",
         "description": "Get unlimited access to all professional tools. Elevate your musical performance with exclusive features and priority support.",
         "securePayment": "Payment securely processed. Cancel anytime."
+    },
+    "landing": {
+        "heroTitle": "Your Music, Reimagined.",
+        "heroSubtitle": "Professional backing tracks with real-time pitch and speed control.",
+        "ctaStart": "Get Started",
+        "ctaLogin": "Login",
+        "featuresTitle": "Why Smart Play?",
+        "feature1Title": "High Quality Audio",
+        "feature1Desc": "Crystal clear backing tracks for live performance.",
+        "feature2Title": "Real-time Transposition",
+        "feature2Desc": "Change key instantly without quality loss.",
+        "feature3Title": "Cloud Sync",
+        "feature3Desc": "Access your repertoire from any device."
     }
 }

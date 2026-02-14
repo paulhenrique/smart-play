@@ -48,11 +48,7 @@ body {
   flex-direction: column;
 }
 
-@media (min-width: 768px) {
-  #root {
-    padding: 2rem;
-  }
-}
+
 
 button {
   border-radius: 8px;

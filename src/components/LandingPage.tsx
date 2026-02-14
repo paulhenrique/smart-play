@@ -4,11 +4,19 @@ import { SignInButton, SignUpButton } from "@clerk/clerk-react";
 import { PlayCircle, Music, Zap, Cloud, ArrowRight } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 
+import SEO from './SEO';
+
 const LandingPage: React.FC = () => {
     const { t } = useTranslation();
 
     return (
         <div className="min-h-screen bg-[#0f172a] text-slate-100 font-sans selection:bg-purple-500/30">
+            <SEO
+                title={t('landing.heroTitle')}
+                description={t('landing.heroSubtitle')}
+                keywords="backing tracks, music player, transpose, pitch shift, musician tools"
+            />
+
 
             {/* Navbar */}
             <nav className="fixed w-full z-50 top-0 start-0 border-b border-white/5 bg-[#0f172a]/80 backdrop-blur-md">

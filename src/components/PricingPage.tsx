@@ -7,6 +7,8 @@ interface PricingPageProps {
     onBack: () => void;
 }
 
+import SEO from './SEO';
+
 const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
     // Note: 'PricingTable' must be a valid export from @clerk/clerk-react or a custom component.
     // Assuming standard usage or user-provided environment.
@@ -14,6 +16,10 @@ const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
 
     return (
         <div className="fixed inset-0 z-50 bg-[#0f172a] text-white overflow-y-auto animate-in fade-in duration-300">
+            <SEO
+                title={t('pricing.title')}
+                description={t('pricing.description')}
+            />
             {/* Background Effects */}
             <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
                 <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/20 blur-[120px] rounded-full"></div>

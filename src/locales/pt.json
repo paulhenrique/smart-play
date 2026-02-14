@@ -1,0 +1,35 @@
+{
+    "app": {
+        "title": "Smart Play",
+        "subtitle": "Playbacks e Transposição em Tempo Real",
+        "login": "Entrar",
+        "footer": {
+            "powered": "Desenvolvido com Tone.js Audio Engine",
+            "note": "Use fones de ouvido para melhor experiência. A alteração de tom pode gerar artefatos em mudanças extremas."
+        }
+    },
+    "trackList": {
+        "title": "Repertório",
+        "premium": "Premium"
+    },
+    "player": {
+        "back": "Voltar",
+        "loading": "Carregando áudio...",
+        "selectTrack": "Selecione uma base para começar",
+        "originalKey": "Tom Original",
+        "semitones": "Semitons",
+        "playback": "Reprodução",
+        "play": "Tocar",
+        "pause": "Pausar",
+        "speed": "Velocidade",
+        "reset": "Reset",
+        "resetPitch": "Resetar Tom",
+        "pitch": "Tonalidade"
+    },
+    "pricing": {
+        "back": "Voltar para o Player",
+        "title": "Desbloqueie o Smart Play Pro",
+        "description": "Tenha acesso ilimitado a todas as ferramentas profissionais. Eleve sua performance musical com recursos exclusivos e suporte prioritário.",
+        "securePayment": "Pagamento processado de forma segura. Cancele a qualquer momento."
+    }
+}

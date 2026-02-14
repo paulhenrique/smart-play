@@ -2,6 +2,7 @@ import React from 'react';
 import { PlayCircle, Music, Lock } from 'lucide-react';
 import type { Track } from '../data/tracks';
 import { usePremiumStatus } from '../hooks/usePremiumStatus';
+import { useTranslation } from 'react-i18next';
 import './TrackList.css';
 
 interface TrackListProps {
@@ -13,6 +14,7 @@ interface TrackListProps {
 
 const TrackList: React.FC<TrackListProps> = ({ tracks, onSelect, onShowPremium, selectedTrackId }) => {
     const { isPremium } = usePremiumStatus();
+    const { t } = useTranslation();
 
     const handleTrackClick = (track: Track) => {
         if (track.isPremium && !isPremium) {
@@ -26,7 +28,7 @@ const TrackList: React.FC<TrackListProps> = ({ tracks, onSelect, onShowPremium, 
         <div className="track-list-container">
             <div className="track-list-header">
                 <Music className="text-purple-400" size={24} color="var(--accent-color)" />
-                <h2 className="track-list-title">Repertório</h2>
+                <h2 className="track-list-title">{t('trackList.title')}</h2>
             </div>
 
             <div className="track-list-scroll custom-scrollbar">

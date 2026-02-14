@@ -1,0 +1,35 @@
+{
+    "app": {
+        "title": "Smart Play",
+        "subtitle": "Backing Tracks & Real-time Transposition",
+        "login": "Login",
+        "footer": {
+            "powered": "Powered by Tone.js Audio Engine",
+            "note": "Use headphones for the best experience. Pitch shifting may generate artifacts at extreme changes."
+        }
+    },
+    "trackList": {
+        "title": "Repertoire",
+        "premium": "Premium"
+    },
+    "player": {
+        "back": "Back",
+        "loading": "Loading audio...",
+        "selectTrack": "Select a backing track to start",
+        "originalKey": "Original Key",
+        "semitones": "Semitones",
+        "playback": "Playback",
+        "play": "Play",
+        "pause": "Pause",
+        "speed": "Speed",
+        "reset": "Reset",
+        "resetPitch": "Reset Pitch",
+        "pitch": "Pitch"
+    },
+    "pricing": {
+        "back": "Back to Player",
+        "title": "Unlock Smart Play Pro",
+        "description": "Get unlimited access to all professional tools. Elevate your musical performance with exclusive features and priority support.",
+        "securePayment": "Payment securely processed. Cancel anytime."
+    }
+}

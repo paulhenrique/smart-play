@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlayCircle } from 'lucide-react';
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { useTranslation } from 'react-i18next';
 import AudioPlayer from './components/AudioPlayer';
 import TrackList from './components/TrackList';
-import PricingPage from './components/PricingPage'; // New Component
+import PricingPage from './components/PricingPage';
+import LanguageSwitcher from './components/LanguageSwitcher';
 import { tracks } from './data/tracks';
 import type { Track } from './data/tracks';
 import './App.css';
@@ -11,8 +13,19 @@ import './App.css';
 type ViewState = 'player' | 'pricing';
 
 const App: React.FC = () => {
+  const { t, i18n } = useTranslation();
+  const { user } = useUser();
   const [selectedTrack, setSelectedTrack] = useState<Track | null>(null);
   const [view, setView] = useState<ViewState>('player');
+
+  useEffect(() => {
+    if (user && user.unsafeMetadata?.language) {
+      const savedLang = user.unsafeMetadata.language as string;
+      if (savedLang && i18n.language !== savedLang) {
+        i18n.changeLanguage(savedLang);
+      }
+    }
+  }, [user, i18n]);
 
   // If view is 'pricing', render the full page component
   if (view === 'pricing') {
@@ -30,18 +43,19 @@ const App: React.FC = () => {
             </div>
             <div>
               <h1 className="app-title">
-                Smart Play
+                {t('app.title')}
               </h1>
               <p className="app-subtitle">
-                Backing Tracks & Real-time Transposition
+                {t('app.subtitle')}
               </p>
             </div>
           </div>
 
-          <div className="auth-container">
+          <div className="auth-container flex items-center gap-4">
+            <LanguageSwitcher />
             <SignedOut>
               <SignInButton mode="modal">
-                <button className="btn-login">Entrar</button>
+                <button className="btn-login">{t('app.login')}</button>
               </SignInButton>
             </SignedOut>
             <SignedIn>
@@ -75,10 +89,9 @@ const App: React.FC = () => {
             />
 
             <div className="footer-info">
-              <p className="footer-main">Powered by Tone.js Audio Engine</p>
+              <p className="footer-main">{t('app.footer.powered')}</p>
               <p className="footer-note">
-                Use fones de ouvido para melhor experiência.
-                A alteração de tom pode gerar artefatos em mudanças extremas.
+                {t('app.footer.note')}
               </p>
             </div>
           </div>

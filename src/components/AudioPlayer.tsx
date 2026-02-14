@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as Tone from 'tone';
 import { Play, Pause, Square, Music, Volume2, Plus, Minus, Loader2 } from 'lucide-react';
 import type { Track } from '../data/tracks';
+import { useTranslation } from 'react-i18next';
 import './AudioPlayer.css';
 
 interface AudioPlayerProps {
@@ -10,6 +11,7 @@ interface AudioPlayerProps {
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
+    const { t } = useTranslation();
     const [isPlaying, setIsPlaying] = useState(false);
     const [isReady, setIsReady] = useState(false);
     const [volume, setVolume] = useState(-5); // dB
@@ -155,7 +157,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
         return (
             <div className="audio-player-container empty-state">
                 <Music size={48} opacity={0.5} />
-                <p className="track-title" style={{ fontSize: '1.25rem', opacity: 0.7 }}>Selecione uma base para começar</p>
+                <p className="track-title" style={{ fontSize: '1.25rem', opacity: 0.7 }}>{t('player.selectTrack')}</p>
             </div>
         );
     }
@@ -168,7 +170,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                 <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-[20px]">
                     <div className="flex flex-col items-center gap-3 animate-in fade-in duration-300">
                         <Loader2 size={48} className="animate-spin text-purple-500" />
-                        <span className="text-sm font-medium text-white/90">Carregando áudio...</span>
+                        <span className="text-sm font-medium text-white/90">{t('player.loading')}</span>
                     </div>
                 </div>
             )}
@@ -178,13 +180,13 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                 <div className="track-display">
                     {onBack && (
                         <button className="btn-back-mobile" onClick={onBack}>
-                            ← Voltar
+                            ← {t('player.back')}
                         </button>
                     )}
                     <h2 className="track-title">{track.name}</h2>
                     <div className="track-meta-badges">
                         <span className="badge badge-purple">
-                            Tom Original: {track.originalKey}
+                            {t('player.originalKey')}: {track.originalKey}
                         </span>
                         {track.bpm && (
                             <span className="badge badge-purple" style={{ borderColor: 'rgba(59, 130, 246, 0.3)', background: 'rgba(59, 130, 246, 0.2)', color: '#93c5fd' }}>
@@ -193,7 +195,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                         )}
                         {pitch !== 0 && (
                             <span className={`badge ${pitch > 0 ? 'badge-pitch' : 'badge-pitch-neg'}`}>
-                                {pitch > 0 ? '+' : ''}{pitch} Semitons
+                                {pitch > 0 ? '+' : ''}{pitch} {t('player.semitones')}
                             </span>
                         )}
                     </div>
@@ -205,7 +207,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
 
                 {/* Left Column: Playback & Speed */}
                 <div className="control-group">
-                    <span className="label-text">Playback</span>
+                    <span className="label-text">{t('player.playback')}</span>
                     <div className="playback-buttons">
                         <button
                             onClick={togglePlay}
@@ -213,7 +215,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                             className={`btn-main ${isPlaying ? 'btn-pause' : 'btn-play'}`}
                         >
                             {isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" />}
-                            {isPlaying ? 'Pausar' : 'Tocar'}
+                            {isPlaying ? t('player.pause') : t('player.play')}
                         </button>
 
                         <button
@@ -231,12 +233,12 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                         <div className="speed-header">
                             <span className="label-text">
                                 {track?.bpm
-                                    ? `Velocidade (${Math.round(track.bpm * speed)} BPM)`
-                                    : `Velocidade (${Math.round(speed * 100)}%)`
+                                    ? `${t('player.speed')} (${Math.round(track.bpm * speed)} BPM)`
+                                    : `${t('player.speed')} (${Math.round(speed * 100)}%)`
                                 }
                             </span>
                             <button className="btn-speed-reset" onClick={() => setSpeed(1)}>
-                                Reset
+                                {t('player.reset')}
                             </button>
                         </div>
 
@@ -292,7 +294,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
 
                 {/* Right Column: Pitch */}
                 <div className="control-group">
-                    <span className="label-text">Tonalidade (Pitch)</span>
+                    <span className="label-text">{t('player.pitch')}</span>
 
                     <div className="pitch-display-box">
                         <button
@@ -306,7 +308,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                             <span className="pitch-number">
                                 {pitch > 0 ? `+${pitch}` : pitch}
                             </span>
-                            <span className="pitch-unit">Semitons</span>
+                            <span className="pitch-unit">{t('player.semitones')}</span>
                         </div>
 
                         <button
@@ -322,7 +324,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ track, onBack }) => {
                         disabled={pitch === 0}
                         className="btn-reset"
                     >
-                        Resetar Tom
+                        {t('player.resetPitch')}
                     </button>
                 </div>
             </div>

@@ -1,0 +1,35 @@
+{
+    "app": {
+        "title": "Smart Play",
+        "subtitle": "Pistas de acompañamiento y transposición",
+        "login": "Iniciar Sesión",
+        "footer": {
+            "powered": "Desarrollado con Tone.js Audio Engine",
+            "note": "Usa auriculares para una mejor experiencia. El cambio de tono puede generar artefactos en cambios extremos."
+        }
+    },
+    "trackList": {
+        "title": "Repertorio",
+        "premium": "Premium"
+    },
+    "player": {
+        "back": "Volver",
+        "loading": "Cargando audio...",
+        "selectTrack": "Selecciona una pista para empezar",
+        "originalKey": "Tono Original",
+        "semitones": "Semitonos",
+        "playback": "Control",
+        "play": "Reproducir",
+        "pause": "Pausar",
+        "speed": "Velocidad",
+        "reset": "Restablecer",
+        "resetPitch": "Restablecer Tono",
+        "pitch": "Tonalidad"
+    },
+    "pricing": {
+        "back": "Volver al Reproductor",
+        "title": "Desbloquea Smart Play Pro",
+        "description": "Obtén acceso ilimitado a todas las herramientas profesionales. Eleva tu rendimiento musical con características exclusivas y soporte prioritario.",
+        "securePayment": "Pago procesado de forma segura. Cancela en cualquier momento."
+    }
+}

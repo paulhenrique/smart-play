@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, PlayCircle } from 'lucide-react';
 import { PricingTable } from '@clerk/clerk-react';
+import { useTranslation } from 'react-i18next';
 
 interface PricingPageProps {
     onBack: () => void;
@@ -9,6 +10,7 @@ interface PricingPageProps {
 const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
     // Note: 'PricingTable' must be a valid export from @clerk/clerk-react or a custom component.
     // Assuming standard usage or user-provided environment.
+    const { t } = useTranslation();
 
     return (
         <div className="fixed inset-0 z-50 bg-[#0f172a] text-white overflow-y-auto animate-in fade-in duration-300">
@@ -25,7 +27,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
                         className="group flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 transition-all text-slate-300 hover:text-white border border-white/5 hover:border-white/10"
                     >
                         <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                        <span className="font-medium text-sm">Voltar</span>
+                        <span className="font-medium text-sm">{t('pricing.back')}</span>
                     </button>
                 </header>
 
@@ -40,12 +42,11 @@ const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
                         </div>
 
                         <h1 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-                            Desbloqueie o <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Smart Play Pro</span>
+                            {t('pricing.title')}
                         </h1>
 
                         <p className="text-lg text-slate-400 leading-relaxed mx-auto max-w-lg">
-                            Tenha acesso ilimitado a todas as ferramentas profissionais.
-                            Eleve sua performance musical com recursos exclusivos e suporte prioritário.
+                            {t('pricing.description')}
                         </p>
                     </div>
 
@@ -56,7 +57,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ onBack }) => {
                             <PricingTable />
                         </div>
                         <p className="mt-6 text-xs text-slate-500">
-                            Pagamento processado de forma segura. Cancele a qualquer momento.
+                            {t('pricing.securePayment')}
                         </p>
                     </div>
 

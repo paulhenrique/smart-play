@@ -10,7 +10,9 @@
     },
     "trackList": {
         "title": "Repertório",
-        "premium": "Premium"
+        "premium": "Premium",
+        "searchPlaceholder": "Buscar músicas...",
+        "noResults": "Nenhuma música encontrada"
     },
     "player": {
         "back": "Voltar",

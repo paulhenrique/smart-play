@@ -10,7 +10,9 @@
     },
     "trackList": {
         "title": "Repertoire",
-        "premium": "Premium"
+        "premium": "Premium",
+        "searchPlaceholder": "Search tracks...",
+        "noResults": "No tracks found"
     },
     "player": {
         "back": "Back",

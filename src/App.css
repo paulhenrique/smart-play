@@ -150,6 +150,10 @@
 /* Reset Sidebar Heights */
 .sidebar {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 180px);
+  /* Mobile height constraint */
 }
 
 @media (min-width: 1024px) {

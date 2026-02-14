@@ -10,8 +10,12 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    /* height: 100%; Removed fixed height for flexibility */
-    min-height: 50vh;
+    height: 100%;
+    /* Fill parent height */
+    overflow: hidden;
+    /* Contain scrollable area */
+    min-height: 0;
+    /* Prevent flex items from overflowing parent */
     /* Minimum height */
     flex: 1;
     /* Grow to fill parent */
